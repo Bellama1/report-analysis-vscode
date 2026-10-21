@@ -2,6 +2,10 @@
 
 Report Analysis is a Visual Studio Code extension for exploring processed Robot Framework test results. It presents report summaries, failed tests, failure history, closed defects, module views, and author views in a single VS Code webview. From a failed case, users can inspect its error details and screenshot or navigate to the relevant Robot Framework keyword.
 
+## Extension screenshot
+
+![Anonymized report dashboard](screenshot.png)
+
 > [!IMPORTANT]
 > This extension does not read Robot Framework `output.xml` directly. Before opening a report, generate the required JSON files with **robot-report-analysis-generator**. The extension is a viewer and analysis client; the generator is the data preparation tool.
 
