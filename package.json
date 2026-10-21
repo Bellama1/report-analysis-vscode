@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@git.signintra.com/BELLAMA1/report-analysis.git"
+    "url": "git+ssh://git@github.com/BELLAMA1/report-analysis.git"
   },
   "engines": {
     "vscode": "^1.71.0"
