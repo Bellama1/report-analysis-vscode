@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <title>WebView</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src ${cspSource} https: http: data:; font-src ${cspSource}; style-src ${cspSource} 'unsafe-inline'; script-src 'nonce-${nonce}';">
+    <script nonce="${nonce}" defer src="../js/jquery-3.5.1.min.js"></script>
+    <script nonce="${nonce}" defer src="../dx/js/dx.all.js"></script>
+    <script nonce="${nonce}" defer src="../js/jquery.transit.min.js"></script>
+    <link rel="stylesheet" href="../dx/css/dx.dark.css">
+    <link rel="stylesheet" href="../dx/css/dx.common.css">
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script nonce="${nonce}" defer src="./grid/failedGrid.js"></script>
+    <script nonce="${nonce}" defer src="./grid/poorGrid.js"></script>
+    <script nonce="${nonce}" defer src="./grid/defectGrid.js"></script>
+    <script nonce="${nonce}" defer src="./grid/defectClosed.js"></script>
+    <script nonce="${nonce}" defer src="./index.js"></script>
+    <script nonce="${nonce}">window.__AI_FIX_ICON = "${base64Image}";</script>
+
+</head>
+
+<body id="extPage" class="dx-viewport" >
+        <img id="aiFixIconAsset" style="display:none" alt="AI Fix" />
+        <div class="container">
+            <div class="left-panel main-menu">
+                <div id="viewSelector" style="margin-bottom: 10px;"></div>
+                <div id="treeview" style="height: 90%;"></div>
+            </div>
+            <div class="loadpanel"></div>
+            <div class="selected-container right-panel" >
+                <div id="summary" >
+                    <div class="tabs">
+                        <div class="tab active" data-tab-target="tabGeneral" id="general_Tab">General Overview</div>
+                        <div class="tab" data-tab-target="tabPoorCases">Poor Cases</div>
+                        <div class="tab" data-tab-target="tabDefectClosedCases">Defect Closed Cases</div>
+                    </div>
+                    <div class="table-container active" id="tabGeneral">
+                        <div id="summaryContainer" title="Execution Summary">
+                            <strong class="overview-version-watermark" id="overviewVersion">--</strong>
+                            <div class="widgets-grid__row_flex">
+                                <div class="col-md-6 widget island">
+                                    <h2 class="summary-chart-title">Execution Summary</h2>
+                                    <div id="summaryPie"></div>
+                                    <div class="summary-stats" aria-label="Execution totals">
+                                        <div class="summary-stat summary-stat--pass"><span>Pass</span><strong id="summaryPass">--</strong></div>
+                                        <div class="summary-stat summary-stat--fail"><span>Fail</span><strong id="summaryFail">--</strong></div>
+                                        <div class="summary-stat summary-stat--skip"><span>Skip</span><strong id="summarySkip">--</strong></div>
+                                        <div class="summary-stat summary-stat--total"><span>Total</span><strong id="summaryTotal">--</strong></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 widget island">
+                                    <div id="executionHistory"></div>
+                                </div>
+                                <!-- <div class="col-md-6 widget island" display:none>
+                                    <div id="moduleLineChart"></div>
+                                </div> -->
+                            </div>
+                            <div class="widgets-grid__row_flex">
+                                <!-- <div class="col-md-6 widget island">
+                                    <div id="moduleLineChart"></div>
+                                </div>
+                                <div class="col-md-6 widget island">
+                                    <div id="executionHistory"></div>
+                                </div> -->
+                                <div class="col-md-7 widget island">
+                                    <div id="moduleGrid"></div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-container" id="tabPoorCases">
+                        <div id="poorCasesTable"></div>
+                    </div>
+                    <div class="table-container" id="tabDefectClosedCases">
+                        <div id="defectClosedTable"></div>
+                    </div>
+                </div>
+                <div id="detailTable" style="display:none">
+                    <div class="tabs">
+                        <div class="tab active" data-tab-target="tab1" id="failed_Tab">Failed Cases</div>
+                        <div class="tab" data-tab-target="tab2">Defected Cases</div>
+                    </div>
+                    <div class="table-container active" id="tab1">
+                        <div id="failedTable"></div>
+                    </div>
+                    <div class="table-container" id="tab2">
+                        <div id="defectedTable"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
+

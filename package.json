@@ -1,0 +1,97 @@
+{
+  "name": "report-analysis",
+  "displayName": "Report Analysis",
+  "publisher": "robot-report-tools",
+  "description": "Analyze Robot Framework results from a local folder or report server.",
+  "version": "4.4.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@git.signintra.com/BELLAMA1/report-analysis.git"
+  },
+  "engines": {
+    "vscode": "^1.71.0"
+  },
+  "categories": ["Testing"],
+  "keywords": ["robot framework", "test report", "test automation", "failure analysis"],
+  "icon": "image/icon.png",
+  "activationEvents": [
+    "onCommand:report-analysis.open"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": [
+      {
+        "title": "Report Analysis",
+        "properties": {
+          "reportAnalysis.reportSource": {
+            "type": "string",
+            "default": "",
+            "description": "HTTP(S) URL or local folder containing versioned ReportAnalysis data",
+            "scope": "window"
+          },
+          "reportAnalysis.pythonPath": {
+            "type": "string",
+            "default": "python",
+            "description": "Python executable used to read report data",
+            "scope": "machine"
+          },
+          "reportAnalysis.ai.maxCases": {
+            "type": "integer",
+            "default": 20,
+            "minimum": 1,
+            "maximum": 100,
+            "description": "Maximum failed cases included in one AI Fix request",
+            "scope": "window"
+          }
+        }
+      }
+    ],
+    "commands": [
+      {
+        "command": "report-analysis.open",
+        "title": "Report Analysis"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "report-analysis.open",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "report-analysis.open",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.71.0",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "@vscode/test-electron": "^2.1.5",
+    "esbuild": "^0.19.4",
+    "eslint": "^8.20.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.0.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {}
+}
